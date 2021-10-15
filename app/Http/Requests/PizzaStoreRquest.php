@@ -13,7 +13,7 @@ class PizzaStoreRquest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class PizzaStoreRquest extends FormRequest
             'medium_pizza_price' => 'required|number',
             'large_pizza_price' => 'required|number',
             'category' => 'required',
-            'image' => 'required|mimes:png,jpg,jpeg'
+            'image' => 'required|mimes:png,jpg,jpeg',
         ];
     }
 }
