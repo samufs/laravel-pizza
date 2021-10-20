@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PizzaStoreRquest;
+use App\Http\Requests\PizzaStoreRequest;
 use App\Models\Pizza;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,8 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        return view('pizza.index');
+        $pizzas = Pizza::get();
+        return view('pizza.index', compact('pizzas'));
     }
 
     /**
