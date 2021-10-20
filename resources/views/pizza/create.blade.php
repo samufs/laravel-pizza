@@ -14,18 +14,23 @@
                     </ul>
                 </div>
             </div>
+            @if(count($errors)>0)
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $error)
+                            <p>{{$error}}</p> 
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endif  
         </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Pizza</div>
-                @if(count($errors)>0)
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                           <p>{{$error}}</p> 
-                        @endforeach
-                    </div>
-                @endif
-                <form action="{{route('pizza.store')}}" method="post">@csrf
+               
+                <form action="{{route('pizza.store')}}" method="post" enctype="multipart/form-data">@csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Nombre de la Pizza</label>
@@ -43,9 +48,10 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Categoría</label>
-                            <select name="categoy" id="" class="form-control">
+                            <select name="category" id="category" class="form-control">
+                                <option value="">---</option>
                                 <option value="vegetarian">Pizza Vegetariana</option>
-                                <option value="nonvegetarian">Pizza Vegetariana</option>
+                                <option value="nonvegetarian">Pizza No Vegetariana</option>
                                 <option value="traditional">Pizza Tradicional</option>
                             </select>
                         </div>
